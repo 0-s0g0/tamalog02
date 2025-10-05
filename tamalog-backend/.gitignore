@@ -1,0 +1,34 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Uploads & Output
+uploads/
+data/output/
+data/debug/
+
+# Generated Images
+output_*.jpg
+debug_*.jpg
+
+# ML Models (generated at runtime)
+knn_opencv_model.xml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp
+a.out
+*.tmp

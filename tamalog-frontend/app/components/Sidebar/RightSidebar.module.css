@@ -1,0 +1,40 @@
+/* components/RightSidebar.module.css */
+.sidebar {
+  width: 24vw;  /* サイドバーの幅 */
+  height: 98%;  /* サイドバーを画面全体の高さに合わせる */
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgb(250, 250, 250);  
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: column;
+  align-items: flex-start; /* アイテムを上に揃える */
+  border-radius: 20px;  /* 角を丸くする */
+}
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: column; /* 要素を縦に並べる */
+  justify-content: flex-start; /* 垂直方向の先頭に揃える */
+  align-items: center; /* 水平方向の中央揃え */
+  overflow: auto;
+  
+  width: 100%;
+  height: 100%;
+}
+
+.titleback{
+  margin-top: 1vw;
+ 
+  width: 100%; 
+}
+.titleImage{
+  width: 100%;   
+  
+}

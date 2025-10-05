@@ -1,0 +1,76 @@
+/* 表のスタイル */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+  }
+  
+  .table th {
+    background-color: #f4f4f4;
+    font-family: 'KraftMincho';
+    color: #4c7d7e;
+  }
+
+  /* アクションボタンのスタイル */
+  .actionEditButton {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    margin-Right: 10%;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    background-color: #5497d577;
+    color: white;
+  }
+
+  .actionDeleteButton {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    background-color: #d94e4e65;
+    color: white;
+  }
+
+  .tableCard {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow here */ 
+  }
+
+  @media (max-width: 500px){
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+    .table th, .table td {
+    padding: 0rem;
+    font-size: small;
+  }
+    .actionEditButton {
+    padding: 0.25rem 0.5rem;
+    background-color: #5497d542;
+    font-size: 0.5rem;
+    color: rgb(78, 74, 74);
+  }
+
+    .actionDeleteButton {
+    padding: 0.25rem 0.5rem;
+    width: 90%;
+    font-size: 0.5rem;
+    background-color: #d94e4e2a;
+    color: rgb(78, 74, 74);
+  }
+
+
+
+          
+}

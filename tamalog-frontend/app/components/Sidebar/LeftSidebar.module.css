@@ -1,0 +1,70 @@
+/* 左のサイドバー */
+.sidebar {
+  margin-left: 1rem;
+  width: 220px;
+  height: 100vw;
+  /*background-color: #276b6d4d; */
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.sidebarA{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+.imageContainer {
+  position: relative; /* 画像の上にCountDisplayを重ねるための親要素 */
+  background-image: url('../../public/Count.png'); /* 画像のパス */
+  background-size: cover; /* 画像を要素の大きさに合わせてリサイズ */
+  background-position: center; /* 画像の中央を表示 */
+  height: 200px; /* 画像の高さを調整 */
+  width:80%;
+  display: flex;
+  justify-content: center; /* CountDisplayを横方向に中央揃え */
+  align-items: center; /* CountDisplayを縦方向に中央揃え */
+  color: #481D08; /* CountDisplay内のテキスト色（白などに設定） */
+
+}
+
+.countext{
+  font-size: 3rem; /* カウントテキストを大きくする */
+  font-weight: bold; /* 太字 */
+}
+
+
+
+/* ボタン全体のスタイル */
+.sidebarButton {
+  display: flex;
+  gap:2vw; /* アイコンと文字の間にスペース */
+  padding-bottom: 1vw;
+}
+
+/* ボタン単体のスタイル */
+.buttonContent {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  gap: 5px; /* アイコンと文字の間にスペースを追加 */
+   /* background-color: rgba(52, 140, 241, 0.295);*/
+  
+}
+
+
+/* 文字のスタイル */
+.buttonText{
+  text-align: center;
+  /*background-color: bisque;*/
+  font-family:  'KraftMincho';
+  font-size: 1.25rem;
+  color: #4f2f2f;
+  font-weight: bold;
+}
+
+
+  
