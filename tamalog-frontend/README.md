@@ -35,35 +35,6 @@ tamalog-frontend/
 └── README.md
 ```
 
-## セットアップ
-
-```bash
-# 依存パッケージインストール
-npm install
-
-# 環境変数設定
-cp .env.local.example .env.local
-# Firebase設定を .env.local に記述
-
-# 開発サーバー起動
-npm run dev
-```
-
-**いまはdockerいれてるよ！**
-
-## 環境変数
-
-`.env.local` に以下を設定:
-
-```env
-NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
-NEXT_PUBLIC_API_URL=http://localhost:5001
-```
 
 ## 主な機能
 
@@ -77,77 +48,6 @@ NEXT_PUBLIC_API_URL=http://localhost:5001
 - **EntryAC（目標データ）**: 目標体重/体脂肪率/筋肉量
 - **EntrySports（運動記録）**: 運動種目/時間
 
-### 可視化
-- ドーナツグラフ（体組成バランス）
-- 折れ線グラフ（推移）
-- データテーブル（履歴一覧）
-- カレンダー（運動記録）
-
-### レスポンシブ対応
-- デスクトップ: 768px以上
-- モバイル: 768px未満
-
-## API仕様
-
-### **GET /api/post**
-全データ取得
-
-**レスポンス:**
-```json
-[
-  {
-    "id": "1",
-    "date": "2025-10-05",
-    "bodyWater": "5.2",
-    "protein": "3.8",
-    "minerals": "4.1",
-    "bodyFat": "6.7",
-    "totalWeight": 60.5,
-    "totalMuscle": 45.2
-  }
-]
-```
-
-### **POST /api/post**
-新規データ作成
-
-### **PUT /api/post**
-データ更新
-
-### **DELETE /api/post**
-データ削除
-
-## Firebase構造
-
-### Collections
-
-#### `userProfiles/{userId}`
-```typescript
-{
-  nickname: string;
-  icon: string;
-  height: string;
-  sex: string;
-  goalWeight: string;
-  goalFat: string;
-  goalMuscle: string;
-  entryAC: EntryAC[];
-}
-```
-
-#### `userEntries/{userId}`
-```typescript
-{
-  entries: Entry[];
-}
-```
-
-#### `userSports/{userId}`
-```typescript
-{
-  entrySports: EntrySports[];
-}
-```
 
 ## 技術スタック
 
@@ -162,21 +62,6 @@ React Calendar 5.1.0
 Tanstack Table 8.20.5
 ```
 
-## スクリプト
-
-```bash
-# 開発サーバー起動
-npm run dev
-
-# プロダクションビルド
-npm run build
-
-# プロダクション起動
-npm run start
-
-# Lint実行
-npm run lint
-```
 
 ## 主要コンポーネント
 

@@ -18,6 +18,7 @@ debug_*.jpg
 
 # ML Models (generated at runtime)
 knn_opencv_model.xml
+.EasyOCR/
 
 # IDE
 .vscode/
