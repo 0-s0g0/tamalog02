@@ -3,7 +3,7 @@
 // import
 ///////////////////////////////////////////
 //main
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
 
@@ -71,6 +71,7 @@ export default function Home() {
 
   // 認証関連のstate
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   ///////////////////////////////////////////
   // レンダリング時の処理
@@ -88,15 +89,16 @@ export default function Home() {
     fetchEntries();
   }, []);
 
-  // データ取得関数を外部で定義
-  const fetchData = async () => {
+  // データ取得関数をuseCallbackで定義
+  const fetchData = useCallback(async () => {
     if (auth.currentUser) {
+      setIsLoading(true);
       await getEntriesFromFirestore(setEntries);
       await getEntryACFromFirestore(setEntryAC);
       await getEntrySportsFromFirestore(setSportsEntries);
-      await getCountEntriesFromFirestore(setEntries);
+      setIsLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     setCount(entries.length); // entriesの長さをcountとして設定
@@ -104,12 +106,18 @@ export default function Home() {
 
   // ログイン状態の監視とデータ取得
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       setIsLoggedIn(!!user);
 
       // ユーザーがログインしている場合のみデータ取得
       if (user) {
-        fetchData();
+        setIsLoading(true);
+        await getEntriesFromFirestore(setEntries);
+        await getEntryACFromFirestore(setEntryAC);
+        await getEntrySportsFromFirestore(setSportsEntries);
+        setIsLoading(false);
+      } else {
+        setIsLoading(false);
       }
     });
 
@@ -241,6 +249,18 @@ const handlePiyoTouchEnd = (e: React.TouchEvent) => {
   ///////////////////////////////////////////
   // UIレンダリング
   ///////////////////////////////////////////
+
+  // ローディング中の表示
+  if (isLoading) {
+    return (
+      <div className={local.body}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <p>読み込み中...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={local.body}>
       <Header2 entries={entries} setEntries={setEntries} fetchData={fetchData} />

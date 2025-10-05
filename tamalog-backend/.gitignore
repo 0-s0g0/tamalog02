@@ -33,3 +33,6 @@ Thumbs.db
 # Temp
 a.out
 *.tmp
+
+# Environment
+.env

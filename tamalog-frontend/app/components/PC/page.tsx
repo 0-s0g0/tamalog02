@@ -108,19 +108,23 @@ export default function Home() {
 
   // ログイン状態の監視とデータ取得
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       setIsLoggedIn(!!user);
 
       // ユーザーがログインしている場合のみデータ取得
       if (user) {
-        fetchData();
+        setIsLoading(true);
+        await getEntriesFromFirestore(setEntries);
+        await getEntryACFromFirestore(setEntryAC);
+        await getEntrySportsFromFirestore(setSportsEntries);
+        setIsLoading(false);
       } else {
         setIsLoading(false);
       }
     });
 
     return () => unsubscribe();
-  }, [fetchData]);
+  }, []);
 
   ///////////////////////////////////////////
   //関数
