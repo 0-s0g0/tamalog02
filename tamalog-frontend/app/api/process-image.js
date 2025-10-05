@@ -16,7 +16,8 @@ export default async function handler(req) {
     }
 
     // Flask APIにリクエストを送信
-    const response = await fetch('http://localhost:5000/process-image', {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5001';
+    const response = await fetch(`${apiUrl}/backend/upload`, {
       method: 'POST',
       body: formData, // FormDataをそのまま渡す
     });
