@@ -12,7 +12,7 @@ tamalog-backend/
 │   │   ├── template_matcher.py     # テンプレートマッチング
 │   │   └── classical_detector.py   # 高速古典的検出（輪郭ベース）
 │   └── __init__.py
-├── temp/                        # テンプレート画像（44枚）
+├── temp/                        # テンプレート画像（44枚-対象物を255値）
 ├── uploads/                     # アップロード画像保存先(ignoreしてる)
 ├── data/
 │   ├── output/                  # 処理結果画像(ignoreしてる)
@@ -23,40 +23,8 @@ tamalog-backend/
 
 ```
 
-## セットアップ
 
-```bash
-# 仮想環境作成
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-
-# 依存パッケージインストール
-pip install -r requirements.txt
-
-# サーバー起動
-python upload.py
-```
-
-**いまはdockerいれてるよ！**
-
-## API仕様
-
-### **POST /backend/upload**
-
-InBody画像をアップロードして数値を抽出
-
-**リクエスト:**
-```bash
-curl -X POST http://127.0.0.1:5001/backend/upload \
-  -F "image=@inbody_photo.jpg"
-```
-
-**レスポンス:**
-```json
-[5.2, 3.8, 4.1, 6.7, 8.3, 2.9, 1.5]
-```
-
-## 処理フロー（古典的画像処理）
+## 処理フロー（古典的画像処理をメインにしてるよ）
 
 ```
 1. 画像アップロード
@@ -79,7 +47,7 @@ curl -X POST http://127.0.0.1:5001/backend/upload \
 
 
 
-## パラメータ調整
+## パラメータメモ
 
 ### `template_matcher.py`
 
@@ -111,8 +79,4 @@ opencv-python-headless
 numpy
 ```
 
-### インストール
 
-```bash
-pip install -r requirements.txt
-```
