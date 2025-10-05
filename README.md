@@ -1,8 +1,4 @@
-# たまlog
-
-体組成管理アプリ
-
-<img width="100" alt="logo2" src="https://github.com/user-attachments/assets/25e65ee7-be0a-41fb-a02c-5b4d632d770a" />
+# たまlog:体組成管理アプリ<img width="100" alt="logo2" src="https://github.com/user-attachments/assets/25e65ee7-be0a-41fb-a02c-5b4d632d770a" />
 
 ## 概要
 
