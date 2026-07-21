@@ -1,9 +1,8 @@
 /* グラフカード全般のスタイル */
 .graphCard {
-  height: 200px;
+  min-height: 200px;
   display: flex;
-  top: -100px;
-
+  min-width: 0;
 }
 
 
@@ -20,13 +19,72 @@
 
   /* 円グラフのスタイル */
   .donutChart {
-    height: 100px;
+    min-height: 160px;
     display: flex;
     align-items: center;
     justify-content: center;
-    align-items: center; /* 縦方向に中央揃え */
-    justify-content: center; /* 横方向に中央揃え */
     margin-left: 0.5rem;
+    gap: 1rem;
+    min-width: 0;
+  }
+
+  .chartWrapper {
+    width: clamp(120px, 38vw, 150px);
+    height: clamp(120px, 38vw, 150px);
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
+  .barList {
+    flex: 1 1 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    min-width: 0;
+    max-width: 260px;
+  }
+
+  .barRow {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .barTrack {
+    width: 100%;
+    height: 14px;
+    background-color: #E5E5E5;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .barFill {
+    height: 100%;
+    border-radius: 12px;
+    transition: width 0.3s ease;
+  }
+
+  .barValue {
+    position: absolute;
+    right: 10px;
+    top: -24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    font-family: 'KraftMincho';
+  }
+
+  .barLabel {
+    position: absolute;
+    left: 0;
+    top: -16px;
+    font-size: 12px;
+    color: #888;
+    font-family: 'KraftMincho';
   }
   
   /* グラフのタイトル */
@@ -39,11 +97,23 @@
     display:none;
   }
 
-  .graphTitle2{
+	  .graphTitle2{
     font-size: 2rem;
     color:  #FF9E9E;
     font-family: 'KraftMincho'; 
     margin-bottom: 16px; /* グラフとのスペース */
     text-align: left; /* タイトルを左寄せにする */
-  }
+	  }
 
+  @media (max-width: 420px) {
+    .donutChart {
+      flex-direction: column;
+      min-height: 320px;
+      margin-left: 0;
+    }
+
+    .barList {
+      width: 100%;
+      max-width: 260px;
+    }
+  }

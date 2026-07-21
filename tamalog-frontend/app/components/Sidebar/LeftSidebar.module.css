@@ -2,10 +2,11 @@
 .sidebar {
   margin-left: 1rem;
   width: 220px;
-  height: 100vw;
+  height: auto;
   /*background-color: #276b6d4d; */
   display: flex;
-  position: fixed;
+  position: sticky;
+  top: 1rem;
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
@@ -49,7 +50,7 @@
 .buttonContent {
   display: flex;
   align-items: center;
-  width: 200px;
+  width: min(200px, 100%);
   gap: 5px; /* アイコンと文字の間にスペースを追加 */
    /* background-color: rgba(52, 140, 241, 0.295);*/
   
@@ -65,6 +66,11 @@
   color: #4f2f2f;
   font-weight: bold;
 }
-
+  
 
   
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+}

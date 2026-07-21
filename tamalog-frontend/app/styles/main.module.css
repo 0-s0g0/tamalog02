@@ -1,42 +1,70 @@
+.body {
+  width: 100%;
+  min-height: 100vh;
+}
+
 .fullbackContent {
-  margin: 1rem;
-  width: 90vw;
+  margin: 1rem auto;
+  width: min(1400px, calc(100vw - 2rem));
   background-color: rgba(255, 250, 250, 0.9);
   border-radius: 40px 40px 40px 40px;
   position: relative; 
   z-index: 1; /* 他の要素よりも前面に表示 */
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
 }
 
 .mainbackContent {
-  margin: 1rem;
-  margin-left: 230px;
-  width: 90%; /* サイドバー分だけ余白を確保 */
+  margin: 1rem 1rem 1rem 0;
+  width: auto;
   background-color: rgb(245, 253, 226);
   border-radius: 40px 40px 40px 40px;
   position: relative; 
-  z-index: -10; /* 他の要素よりも前面に表示 */
+  z-index: 1; /* 他の要素よりも前面に表示 */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 24vw);
+  gap: 1rem;
+  min-width: 0;
 }
 .mainContent {
   margin: 1rem;
-  width: 70%; /* サイドバー分だけ余白を確保 */
+  width: auto;
   /*background-color: rgb(122, 201, 224);*/
   border-radius: 40px 40px 40px 40px;
   position: relative; 
-  z-index: -10; /* 他の要素よりも前面に表示 */
+  z-index: 1; /* 他の要素よりも前面に表示 */
+  min-width: 0;
 }
 .piyoback{
   display: flex;
   align-items: center; 
   font-size: 1.5rem;
+  gap: 1rem;
+  min-width: 0;
 }
 .piyo{
-  width: 300px;
+  width: min(300px, 30vw);
+  height: auto;
   object-fit: cover;
+}
+
+.container {
+  flex: 1;
+  min-width: 0;
+  max-width: 600px;
 }
 
 .piyoime {
   position: relative; /* tipを重ねるために必要 */
   display: inline-block; /* 必要なら画像サイズにフィットさせる */
+  max-width: 100%;
+}
+
+.piyoime img {
+  max-width: 100%;
+  height: auto;
 }
 
 .tip {
@@ -67,19 +95,22 @@
   display: flex;
   align-items: center; 
   justify-content: center; 
+  flex-wrap: wrap;
   /*background-color:antiquewhite;*/
   margin-left:1rem;
   margin-right: 1rem;
 }
 .ChartsBack{
-  width: 100%;
+  flex: 1 1 280px;
+  min-width: 0;
   /*background-color:rgb(247, 188, 110);*/
   margin: 1rem;
 }
 
 
 .titleImage{
-  width: 350px;
+  width: min(350px, 100%);
+  height: auto;
   object-fit: cover;
   margin-top: 50px;
 }
@@ -87,8 +118,36 @@
 .ChartsLineBack{
   margin-left: 1rem;
   margin-right: 2rem;
+  min-width: 0;
 }
 
+.sidebarRight {
+  min-width: 0;
+  padding: 1rem 1rem 1rem 0;
+}
+
+@media (max-width: 900px){
+  .fullbackContent {
+    display: block;
+    width: min(100%, calc(100vw - 1rem));
+    margin: 0.5rem auto;
+    border-radius: 24px;
+  }
+
+  .mainbackContent {
+    display: block;
+    margin: 0.5rem;
+    border-radius: 24px;
+  }
+
+  .mainContent {
+    margin: 0.75rem;
+  }
+
+  .sidebarRight {
+    display: none;
+  }
+}
 
 @media (max-width: 500px){
 
@@ -98,7 +157,7 @@
   margin-top: 10px;
 }
   .piyo{
-  width: 400px;
+  width: min(140px, 38vw);
   object-fit: cover;
   margin-left: 10px;
 }

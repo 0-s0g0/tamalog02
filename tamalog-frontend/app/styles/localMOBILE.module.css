@@ -1,4 +1,9 @@
 /* 親のカード要素 */
+.body {
+    width: 100%;
+    min-height: 100vh;
+  }
+
 .fullbackContent {
     margin-left: 1%;  /* サイドバーの横幅と同じ値 */
     margin-right: 1vw;  /* サイドバーの横幅と同じ値 */
@@ -12,14 +17,16 @@
   }
   
   .mainbackContent {
-    margin-left: 2vw;  /* サイドバーの横幅と同じ値 */
+    margin-left: auto;  /* サイドバーの横幅と同じ値 */
+    margin-right: auto;
     margin-top: 80px;
     margin-bottom: 80px;  
-    width: calc(94vw); /* サイドバー分だけ余白を確保 */
+    width: min(94vw, calc(100% - 1rem)); /* サイドバー分だけ余白を確保 */
     background-color: rgb(245, 253, 226);
     border-radius: 40px 40px 40px 40px;
     position: relative; 
     z-index: 1; /* インタラクティブ要素を前面に表示 */
+    overflow: hidden;
   }
   
   .mainbackContent2 {
@@ -49,8 +56,9 @@
   .grid {
     display: grid;
     gap: 16px;  /* カードとグラフの間にスペースを追加 */
-    height: 200px;
+    min-height: 200px;
     align-items: center; /*縦方向の中央揃え */
+    min-width: 0;
   }
   
   .sidebarA{

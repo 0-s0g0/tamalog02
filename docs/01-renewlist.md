@@ -7,6 +7,26 @@
 - `npm run build`: 成功
 - 実表示確認: `390px` と `1280px` の viewport で主要ページを確認
 
+## 実装状況
+
+- 2026-07-21 実装済み:
+  - PC 画面の横スクロールを修正
+  - mobile 画面の横スクロールを修正
+  - 負の `z-index` を削除
+  - ダッシュボードの `/api/post` 二重取得を停止
+  - Firestore 取得を `try/finally` と空状態 fallback 付きに整理
+  - 空データ時の `NaN%` 表示を修正
+  - Chart.js の `fill` 警告を避けるため折れ線グラフの `fill` 指定を削除
+  - mobile のデータテーブル編集モーダルを表示できるように修正
+  - 390px / 1280px の `/mobile-page` と `/components/PC` で横スクロールなしを確認
+- 未対応:
+  - `/api/post` route 自体の削除
+  - Firestore の subcollection 化
+  - 依存関係バージョン不整合の解消
+  - テストログイン情報の直書き削除
+  - 画像 LCP / aspect ratio 警告の整理
+  - PC/mobile ルート統合と共通 hook 化
+
 ## 優先度 高
 
 ### PC 画面の横スクロールを直す

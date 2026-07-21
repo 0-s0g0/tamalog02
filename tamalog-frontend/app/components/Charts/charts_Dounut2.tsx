@@ -56,7 +56,7 @@ const Charts_Dounut2: React.FC<ChartsUIProps> = ({
   const barData = [
     { 
       label: 'Mineral', 
-      value: latestEntry. minerals || 0, 
+      value: latestEntry.minerals || 0, 
       color: '#FFB366', 
       maxValue: 5 
     },
@@ -89,76 +89,42 @@ const Charts_Dounut2: React.FC<ChartsUIProps> = ({
         <div className={`${styles.graphCard} ${styles.donutChart}`}>
           
           {/* 左側の円グラフ */}
-          <div className={styles.chartWrapper} style={{
-            width: '150px',
-            height: '150px',
-            flexShrink: 0,
-            
-          }}>
+          <div className={styles.chartWrapper}>
              <Doughnut data={donutChartData} options={donutChartOptions} />
           </div>
 
           {/* 右側のバーチャート */}
-          <div style={{
-            flex: 1,
-            paddingLeft: '20px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            gap: '32px',
-            width:'200px'
-          }}>
-            {barData.map((item, index) => (
-              <div key={index} style={{
-                display: 'flex',
-                alignItems: 'center',
-                position: 'relative',
-                width:'200px'
-              }}>
+          <div className={styles.barList}>
+            {barData.map((item, index) => {
+              const progress = Math.min(
+                Math.max(Number(item.value) / Number(item.maxValue), 0),
+                1
+              ) * 100;
+
+              return (
+              <div key={index} className={styles.barRow}>
                 {/* バー */}
-                <div style={{
-                  width: '180px',
-                  height: '14px',
-                  backgroundColor: '#E5E5E5',
-                  borderRadius: '12px',
-                  overflow: 'hidden',
-                  position: 'relative',
-                }}>
-                  <div style={{
-                    width: `${Number(item.maxValue) > 0 ? (Number(item.value) / Number(item.maxValue)) * 100 : 0}%`,
-                    height: '100%',
-                    backgroundColor: item.color,
-                    borderRadius: '12px',
-                    transition: 'width 0.3s ease',
-                  }} />
+                <div className={styles.barTrack}>
+                  <div
+                    className={styles.barFill}
+                    style={{
+                      width: `${Number.isFinite(progress) ? progress : 0}%`,
+                      backgroundColor: item.color,
+                    }}
+                  />
                 </div>
 
                 {/* 数値表示 */}
-                <div style={{
-                  position: 'absolute',
-                  right: '50px',
-                  top: '-24px',
-                  fontSize: '16px',
-                  fontWeight: 'bold',
-                  color: '#333',
-                  fontFamily: 'KraftMincho',
-                }}>
+                <div className={styles.barValue}>
                   {item.value}kg
                 </div>
 
                 {/* ラベル表示 */}
-                <div style={{
-                  position: 'absolute',
-                  left: '0px',
-                  top: '-16px',
-                  fontSize: '12px',
-                  color: '#888',
-                  fontFamily: 'KraftMincho',
-                }}>
+                <div className={styles.barLabel}>
                   {item.label}
                 </div>
               </div>
-            ))}
+            )})}
           </div>
         </div>
           

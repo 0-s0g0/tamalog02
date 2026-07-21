@@ -1,6 +1,7 @@
 /* 表のスタイル */
 .table {
     width: 100%;
+    min-width: 340px;
     border-collapse: collapse;
   }
   
@@ -41,6 +42,9 @@
     text-align: center;
     background-color: rgba(255, 255, 255, 0.6);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow here */ 
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
   }
 
   @media (max-width: 500px){

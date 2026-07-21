@@ -6,6 +6,11 @@
 import { Entry } from '../type'; 
 
 //関数のエクスポート
+const toFiniteNumber = (value: unknown) => {
+  const numberValue = Number(value);
+  return Number.isFinite(numberValue) ? numberValue : 0;
+};
+
 //折れ線グラフのデータ
 export const getLineChartData = (entries: Entry[], metric: 'totalWeight' | 'bodyFat' | 'totalMuscle') => {
   let label;
@@ -34,10 +39,9 @@ export const getLineChartData = (entries: Entry[], metric: 'totalWeight' | 'body
     datasets: [
       {
         label,
-        data: entries.map(entry => entry[metric]),
+        data: entries.map(entry => toFiniteNumber(entry[metric])),
         borderColor,
         backgroundColor,
-        fill: true,
       },
     ],
   };
@@ -51,10 +55,10 @@ export const getDonutChartData = (latestEntry: Entry) => {
     datasets: [
       {
         data: [
-          parseFloat(latestEntry.bodyWater),  // 体水分
-          parseFloat(latestEntry.protein),    // タンパク質
-          parseFloat(latestEntry.minerals),   // ミネラル
-          parseFloat(latestEntry.bodyFat),    // 体脂肪
+          toFiniteNumber(latestEntry.bodyWater),  // 体水分
+          toFiniteNumber(latestEntry.protein),    // タンパク質
+          toFiniteNumber(latestEntry.minerals),   // ミネラル
+          toFiniteNumber(latestEntry.bodyFat),    // 体脂肪
         ],
         backgroundColor: ['#9fbcde', '#acdbb7', '#FFC374', '#FF9E9E'], // 円グラフの各セクションの色
         borderWidth: 1, // 円グラフのセクションの枠線の太さ
@@ -67,13 +71,13 @@ export const getDonutChartData = (latestEntry: Entry) => {
 // ドーナツチャートのオプション
 export const donutChartOptions = {
   plugins: {
-    tooltip: {
-      callbacks: {
-        label: function (tooltipItem: any) {
-          return `${tooltipItem.label}: ${tooltipItem.raw.toFixed(2)} kg`;
-        },
-      },
-    },
+	    tooltip: {
+	      callbacks: {
+	        label: function (tooltipItem: any) {
+	          return `${tooltipItem.label}: ${toFiniteNumber(tooltipItem.raw).toFixed(2)} kg`;
+	        },
+	      },
+	    },
     legend: {
       display: false,
     },
@@ -88,9 +92,6 @@ export const donutChartOptions = {
   },
   cutout: '70%',
 };
-
-
-
 
 
 

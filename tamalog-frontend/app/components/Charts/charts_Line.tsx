@@ -21,7 +21,7 @@ import {
   Title, 
   Tooltip, 
   Legend, 
-  ArcElement 
+  ArcElement
 } from 'chart.js';
 
 // Chart.jsコンポーネントの登録
